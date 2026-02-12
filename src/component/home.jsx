@@ -1,4 +1,5 @@
 import React from 'react';
+import { Star } from "lucide-react";
 
 const Card = ({ title, subtitle, bgImage }) => (
     <div className="relative overflow-hidden rounded-xl shadow-lg h-48 group cursor-pointer">
@@ -20,24 +21,58 @@ const Card = ({ title, subtitle, bgImage }) => (
 );
 
 const DoctorCard = ({ name, specialty, image }) => (
-    <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col items-center min-w-[280px]">
-        <div className="w-48 h-48 rounded-2xl overflow-hidden mb-4 bg-purple-100">
-            <img src={image || "https://images.unsplash.com/photo-1559839734-2b71f1e3c770?q=80&w=2070&auto=format&fit=crop"} alt={name} className="w-full h-full object-cover" />
-        </div>
-        <div className="text-center w-full">
-            <h3 className="text-xl font-bold text-gray-800 mb-1">{name}</h3>
-            <p className="text-gray-500 text-sm mb-4">Spesialis {specialty}</p>
+    <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 min-w-[500px] max-w-[600px] shrink-0">
 
-            <div className="flex flex-col gap-2 w-full">
-                <button className="w-full bg-[#6EC207] text-white py-2 rounded-lg font-bold text-sm hover:bg-[#5dad06] transition-colors">
-                    Lihat Profil
-                </button>
-                <button className="w-full bg-[#6EC207] text-white py-2 rounded-lg font-bold text-sm hover:bg-[#5dad06] transition-colors">
-                    Buat Janji
-                </button>
+        <div className="flex items-center gap-6">
+            {/* FOTO */}
+            <div className="w-45 h-45 rounded-2xl overflow-hidden bg-purple-100">
+                <img
+                    src={image || "https://images.unsplash.com/photo-1559839734-2b71f1e3c770?q=80&w=2070&auto=format&fit=crop"}
+                    alt={name}
+                    className="w-full h-full object-cover"
+                />
+            </div>
+            {/* TEXT */}
+            <div className='w'>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">{name}</h3>
+                <p className="text-black text-m font-semibold mb-4">
+                    Spesialis {specialty}
+                </p>
+                <div className="flex items-center gap-2 mb-2">
+                    <div className="w-4 h-4 bg-[#6EC207] rounded-full"></div>
+                    <p className="text-black text-xs">Lebih dari 12 tahun pengalaman</p>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                    <div className="w-4 h-4 bg-[#6EC207] rounded-full"></div>
+                    <p className="text-black text-xs">Anggota Asosiasi Implantologi Indonesia</p>
+                </div>
+                <div className="mt-6 flex gap-4 justify-between">
+                    <button className="flex-1 bg-[#6EC207] text-white py-2 px-4 rounded-lg font-bold text-sm whitespace-nowrap hover:bg-[#5dad06] transition-colors">
+                        Lihat Profil
+                    </button>
+                    <button className="flex-1 bg-[#6EC207] text-white py-2 px-4 rounded-lg font-bold text-sm whitespace-nowrap hover:bg-[#5dad06] transition-colors">
+                        Buat Janji
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+        <div className="w-full h-[1px] bg-gray-300 my-4"></div>
+        <div className='flex justify-between'>
+            <p className='text-xs font-semibold'>Ulasan pasien : Elham Ghaderi</p>
+            <div className='flex'>
+                <Star className="text-yellow-400 w-4 h-4 fill-yellow-400" />
+                <Star className="text-yellow-400 w-4 h-4 fill-yellow-400" />
+                <Star className="text-yellow-400 w-4 h-4 fill-yellow-400" />
+                <Star className="text-yellow-400 w-4 h-4 fill-yellow-400" />
+                <Star className="text-yellow-400 w-4 h-4 fill-yellow-400" />
+            </div>
+        </div>
+        <p className="text-xs mt-2 leading-relaxed">
+            "Ketika saya masuk ke klinik, saya merasa tenang. Mulai dari sikap staf hingga ruang yang modern dan bersih, semuanya sangat meyakinkan. Dr. Karimi dengan sabar dan penuh ketelitian menjelaskan semua tahapan dan melakukan implan tanpa rasa sakit sama sekali. Sekarang setelah satu tahun, kondisinya masih sangat baik seperti hari pertama."
+        </p>
+
+    </div >
+
 );
 
 const ArticleCard = ({ title, date, image }) => (
@@ -117,11 +152,10 @@ const Home = () => {
                     <h2 className="text-2xl font-bold text-gray-800 tracking-tight">Dokter Spesialis</h2>
                 </div>
 
-                <div className="flex flex-row overflow-x-auto gap-8 px-4 md:px-16 pb-8 scrollbar-hide snap-x">
+                <div className="flex flex-row overflow-x-auto gap-8 pb-8 scrollbar-hide snap-x">
                     <DoctorCard name="Dr. Carmen" specialty="Anak" />
                     <DoctorCard name="Dr. Carmen" specialty="Anak" />
                     <DoctorCard name="Dr. Carmen" specialty="Anak" />
-                    <DoctorCard name="Dr. Nadai" specialty="Anak" />
                 </div>
             </section>
 
