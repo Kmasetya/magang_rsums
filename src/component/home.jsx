@@ -10,12 +10,17 @@ const Card = ({ title, subtitle, bgImage }) => (
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
         <div className="absolute top-4 left-4 flex flex-col">
             <div className="flex items-center gap-2 mb-1">
-                <div className="bg-[#6EC207] rounded-full p-1">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                <div className="bg-[#6EC207] rounded-full p-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="11" y1="2" x2="12" y2="22" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                        <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
+                    </svg>
                 </div>
-                <h3 className="text-white font-bold text-sm tracking-wide">{title}</h3>
+                <h3 className="text-[#71CF00] font-bold text-[22px] tracking-wide" style={{ fontFamily: "'Inria Sans', sans-serif", textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>{title}</h3>
             </div>
-            <p className="text-white/80 text-[10px] leading-tight max-w-[140px]">{subtitle}</p>
+            <p className="pt-6 text-white/80 text-[16px] leading-tight max-w-full text-center" style={{ fontFamily: "'Inria Sans', sans-serif" }}>{subtitle}</p>
         </div>
     </div>
 );
@@ -101,14 +106,14 @@ const Home = () => {
             </section>
 
             {/* Facilities Section */}
-            <section className="py-16 px-4 md:px-16 max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+            <section className="py-16 px-4 md:px-0 max-w-7xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-4 gap-4">
                     <div>
-                        <h2 className="text-[#6EC207] text-4xl font-extrabold mb-1 tracking-tight">Fasilitas</h2>
-                        <h3 className="text-[#1A1A1A] text-xl font-bold">RS UMS A.R. Fachrudin</h3>
+                        <h2 className="text-[#6EC207] text-[45px] font-extrabold mb-1 tracking-tight" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Fasilitas</h2>
+                        <h3 className="text-[#1A1A1A] text-2xl font-bold" style={{ fontFamily: "'Inria Sans', sans-serif" }}>RS UMS A.R. Fachrudin</h3>
                     </div>
-                    <p className="text-gray-500 max-w-md text-sm leading-relaxed">
-                        Fasilitas 24 Jam yang menunjang kesehatan serta tenaga medis di unggulan buat kami yang profesional dan berpengalaman di RS UMS A.R. Fachrudin.
+                    <p className="text-gray max-w-md text-md leading-relaxed" style={{ fontFamily: "'Inria Sans', sans-serif" }}>
+                        Fasilitas 24 Jam yang menunjang kesehatan serta tenaga medis di ungguan buat kami yang profesional dan berpengalaman di RS UMS A.R. Fachrudin.
                     </p>
                 </div>
 
@@ -147,9 +152,9 @@ const Home = () => {
             </section>
 
             {/* Doctors Section */}
-            <section className="py-16 bg-[#F9FBF8]">
+            <section className="py-16 bg-[#F3FFE4]">
                 <div className="max-w-7xl mx-auto px-4 md:px-16 text-center mb-12">
-                    <h2 className="text-2xl font-bold text-gray-800 tracking-tight">Dokter Spesialis</h2>
+                    <h2 className="text-2xl font-bold text-gray-800 tracking-tight" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Dokter Spesialis</h2>
                 </div>
 
                 <div className="flex flex-row overflow-x-auto gap-8 pb-8 scrollbar-hide snap-x">
@@ -160,16 +165,16 @@ const Home = () => {
             </section>
 
             {/* Events Section */}
-            <section className="py-16 px-4 md:px-16 max-w-7xl mx-auto">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Kegiatan & Event Rumah Sakit</h2>
-                <p className="text-gray-500 text-sm mb-8">Berbagai kegiatan rutin rumah sakit yang bertujuan edukasi, pelayanan dan kesehatan bagi masyarakat.</p>
+            <section className="py-16 px-4 md:px-0 max-w-7xl mx-auto">
+                <h2 className="text-2xl font-bold text-gray-800 mb-2" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Kegiatan & Event Rumah Sakit</h2>
+                <p className="text-gray text-md mb-4" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Berbagai kegiatan rutin rumah sakit yang bertujuan edukasi, pelayanan dan kesehatan bagi masyarakat.</p>
 
                 <div className="w-full h-[400px] bg-gray-200 rounded-3xl overflow-hidden flex items-center justify-center">
                     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="gray" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" /></svg>
                 </div>
             </section>
             {/* Articles Section */}
-            <section className="py-16 px-4 md:px-16 max-w-7xl mx-auto">
+            <section className="py-16 px-4 md:px-0 max-w-7xl mx-auto">
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Berita & Artikel Kesehatan</h2>
                 <p className="text-gray-500 text-sm mb-10">Dapatkan informasi kesehatan terbaru dari tim medis kami untuk gaya hidup sehat Anda.</p>
 

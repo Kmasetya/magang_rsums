@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="min-h-screen bg-transparent flex flex-col">
       <Navbar onNavigate={setCurrentPage} />
-      <main className="flex-grow pt-[120px] md:pt-[150px]">
+      <main className="flex-grow pt-[120px] md:pt-[125px]">
         {renderPage()}
       </main>
       <Footer />

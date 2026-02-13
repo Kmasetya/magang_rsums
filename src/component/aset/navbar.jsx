@@ -30,7 +30,7 @@ const Navbar = ({ onNavigate }) => {
     return (
         <header className="fixed top-0 left-0 w-full z-[100] transition-all duration-300">
             {/* Top Tier: Contact Info (Compresses on scroll) */}
-            <div className={`bg-[#F1FAE5] px-4 md:px-16 flex flex-col md:flex-row justify-between items-center text-[#1A1A1A] gap-2 transition-all duration-500 overflow-hidden ${isScrolled ? 'max-h-0 py-0 opacity-0' : 'max-h-20 py-3 opacity-100'
+            <div className={`bg-[#F1FAE5] px-4 md:px-20 flex flex-col md:flex-row justify-between items-center text-[#1A1A1A] gap-2 transition-all duration-500 overflow-hidden ${isScrolled ? 'max-h-0 py-0 opacity-0' : 'max-h-20 py-3 opacity-100'
                 }`}>
                 <div className="flex items-center gap-2 self-start md:self-auto">
                     <div className="bg-[#6EC207] p-1.5 rounded-full shrink-0">
@@ -47,19 +47,19 @@ const Navbar = ({ onNavigate }) => {
                         <div className="text-[#6EC207]">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                         </div>
-                        <span className="font-medium whitespace-nowrap">( 62 - 0888 088 880 )</span>
+                        <span className="font-medium whitespace-nowrap text-[14px]">( 62 - 0888 088 880 )</span>
                     </div>
                     <div className="hidden sm:flex items-center gap-1.5 max-w-sm">
                         <div className="text-[#6EC207] shrink-0">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                         </div>
-                        <span className="text-[10px] md:text-xs leading-tight line-clamp-1">Jl. Adi Sucipto No.167, Surakarta</span>
+                        <span className="text-[14px] md:text-[14px] leading-tight line-clamp-1">Jl. Adi Sucipto No.167, Surakarta</span>
                     </div>
                 </div>
             </div>
 
             {/* Bottom Tier: Navigation */}
-            <nav className={`bg-white/95 backdrop-blur-md py-3 px-4 md:px-16 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'shadow-lg border-b border-gray-100' : 'shadow-sm'
+            <nav className={`bg-white/95 backdrop-blur-md py-3 px-4 md:px-20 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'shadow-lg border-b border-gray-100' : 'shadow-sm'
                 }`}>
 
 
@@ -98,10 +98,10 @@ const Navbar = ({ onNavigate }) => {
                 <div className="flex items-center gap-4">
                     {/* Right Side Buttons (Desktop) */}
                     <div className="hidden lg:flex items-center gap-3">
-                        <button className="bg-[#6EC207] text-white px-5 py-2.5 rounded-full font-bold text-xs hover:bg-[#5dad06] transition-all hover:scale-105 active:scale-95 shadow-md">
+                        <button className="bg-[#6EC207] text-white px-5 py-2.5 rounded-full font-bold text-[12px] hover:bg-[#5dad06] transition-all hover:scale-105 active:scale-95 shadow-md">
                             Buat Janji Temu
                         </button>
-                        <button className="bg-white text-[#6EC207] border-2 border-[#6EC207] px-5 py-2 rounded-full font-bold text-xs hover:bg-gray-50 transition-all hover:scale-105 active:scale-95 shadow-sm">
+                        <button className="bg-white text-[#6EC207] border-2 border-[#6EC207] px-5 py-2 rounded-full font-bold text-[12px] hover:bg-gray-50 transition-all hover:scale-105 active:scale-95 shadow-sm">
                             Login dan Daftar
                         </button>
                     </div>
