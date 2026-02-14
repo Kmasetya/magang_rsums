@@ -1,10 +1,10 @@
-import React from 'react';
-import { Star } from "lucide-react";
+import React, { useState, useRef } from 'react';
+import { Star, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Card = ({ title, subtitle, bgImage }) => (
-    <div className="relative overflow-hidden rounded-xl shadow-lg h-48 group cursor-pointer">
+    <div className="relative overflow-hidden rounded-xl shadow-lg h-46 group cursor-pointer">
         <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+            className="absolute inset-0 bg-contain bg-center transition-transform duration-500 group-hover:scale-110"
             style={{ backgroundImage: `url(${bgImage || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop'})` }}
         />
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
@@ -80,23 +80,122 @@ const DoctorCard = ({ name, specialty, image }) => (
 
 );
 
-const ArticleCard = ({ title, date, image }) => (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-        <div className="h-48 overflow-hidden">
-            <img src={image || "https://images.unsplash.com/photo-1628595351029-c2bf17511435?q=80&w=1932&auto=format&fit=crop"} alt={title} className="w-full h-full object-cover" />
+const ArticleCard = ({ title, date, image, subtitle }) => (
+    <div className="bg-white rounded-[32px] p-5 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
+
+        {/* IMAGE */}
+        <div className="h-60 shrink-0 overflow-hidden rounded-[28px]">
+            <img
+                src={
+                    image ||
+                    "https://images.unsplash.com/photo-1628595351029-c2bf17511435?q=80&w=1932&auto=format&fit=crop"
+                }
+                alt={title}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
         </div>
-        <div className="p-4">
-            <p className="text-[#6EC207] text-xs font-bold mb-2 uppercase">{date}</p>
-            <h3 className="font-bold text-gray-800 text-sm line-clamp-2 leading-tight">{title}</h3>
+
+        {/* CONTENT */}
+        <div className="mt-5 flex flex-col flex-1">
+
+            {/* DATE */}
+            <div className="mb-3">
+                <span className="bg-[#E8F5D9] text-[#6EC207] text-[11px] font-semibold px-4 py-1.5 rounded-full">
+                    {date}
+                </span>
+            </div>
+
+            {/* TITLE */}
+            <h3 className="text-[16px] font-bold text-[#0B132A] leading-snug mb-2 line-clamp-2">
+                {title}
+            </h3>
+
+            <p className="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                {subtitle}
+            </p>
         </div>
     </div>
 );
 
+
 const Home = () => {
+    const scrollRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeArticleIndex, setActiveArticleIndex] = useState(0);
+    const articleScrollRef = useRef(null);
+    const articles = [
+        {
+            title: "Kenali Gejala Stunting Pada Balita",
+            subtitle: "Stunting adalah kondisi gagal tumbuh pada anak akibat kekurangan gizi kronis, terutama pada 1000 hari pertama kehidupan. Kenali gejalanya sejak dini agar tumbuh kembang anak optimal.",
+            date: "12 Mei 2024",
+            image: "https://images.unsplash.com/photo-1628595351029-c2bf17511435"
+        },
+        {
+            title: "Cegah Demam Berdarah Secara Mandiri",
+            subtitle: "Demam berdarah dengue (DBD) masih menjadi masalah kesehatan serius. Lakukan langkah 3M Plus untuk mencegah perkembangbiakan nyamuk Aedes aegypti di lingkungan sekitar rumah anda.",
+            date: "10 Mei 2024",
+            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+            title: "Begadang Dapat Mempengaruhi Kesehatan Tubuh",
+            subtitle: "Tidur yang cukup sangat penting untuk regenerasi sel tubuh dan menjaga sistem imun. Kebiasaan begadang dapat meningkatkan risiko berbagai penyakit kronis dan menurunkan produktivitas.",
+            date: "08 Mei 2024",
+            image: "https://images.unsplash.com/photo-1541781777621-af1394378813?q=80&w=2070&auto=format&fit=crop"
+        },
+        {
+            title: "Pentingnya Imunisasi Dasar Lengkap",
+            subtitle: "Imunisasi adalah cara paling efektif untuk melindungi anak dari penyakit berbahaya. Pastikan buah hati anda mendapatkan imunisasi dasar lengkap sesuai jadwal yang direkomendasikan.",
+            date: "05 Mei 2024",
+            image: "https://images.unsplash.com/photo-1632053001815-5e60803eecc2?q=80&w=2070&auto=format&fit=crop"
+        }
+    ];
+
+    const handleArticleScroll = () => {
+        if (articleScrollRef.current) {
+            const { scrollLeft, clientWidth } = articleScrollRef.current;
+            const itemWidth = 320 + 24; // Width + gap
+            const newIndex = Math.round(scrollLeft / itemWidth);
+            setActiveArticleIndex(Math.min(newIndex, articles.length - 1));
+        }
+    };
+
+    const scrollToArticle = (index) => {
+        if (articleScrollRef.current) {
+            const itemWidth = 320 + 24; // Width + gap
+            articleScrollRef.current.scrollTo({
+                left: index * itemWidth,
+                behavior: 'smooth'
+            });
+            setActiveArticleIndex(index);
+        }
+    }
+
+    const doctors = [
+        { name: "Dr. Carmen", specialty: "Anak" },
+        { name: "Dr. Nader H.", specialty: "Bedah Mulut", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop" },
+        { name: "Dr. Sarah K.", specialty: "Jantung", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1974&auto=format&fit=crop" },
+        { name: "Dr. John D.", specialty: "Saraf", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1964&auto=format&fit=crop" },
+    ];
+
+    const scrollToIndex = (index) => {
+        if (index < 0 || index >= doctors.length) return;
+
+        setActiveIndex(index);
+
+        const container = scrollRef.current;
+        const card = container.children[index];
+
+        card.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest",
+        });
+    };
+
     return (
         <div className="w-full bg-white">
             {/* Hero Section */}
-            <section className="relative w-full h-[500px] overflow-hidden">
+            <section className="relative w-full h-[610px] overflow-hidden">
                 <img
                     src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
                     alt="Hospital Hero"
@@ -152,17 +251,59 @@ const Home = () => {
             </section>
 
             {/* Doctors Section */}
-            <section className="py-16 bg-[#F3FFE4]">
-                <div className="max-w-7xl mx-auto px-4 md:px-16 text-center mb-12">
-                    <h2 className="text-2xl font-bold text-gray-800 tracking-tight" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Dokter Spesialis</h2>
+            <section className="py-16 bg-[#F3FFE4] overflow-hidden">
+                <div className="max-w-7xl mx-auto text-center mb-10">
+                    <h2 className="text-3xl font-bold text-gray-800" style={{ fontFamily: "'Inria Sans', sans-serif" }}>
+                        Dokter Spesialis
+                    </h2>
                 </div>
 
-                <div className="flex flex-row overflow-x-auto gap-8 pb-8 scrollbar-hide snap-x">
-                    <DoctorCard name="Dr. Carmen" specialty="Anak" />
-                    <DoctorCard name="Dr. Carmen" specialty="Anak" />
-                    <DoctorCard name="Dr. Carmen" specialty="Anak" />
+                <div className="relative">
+                    {/* LEFT */}
+                    <button
+                        onClick={() => scrollToIndex(activeIndex - 1)}
+                        className="absolute left-48 top-1/2 -translate-y-1/2 z-20 
+          bg-white w-14 h-14 rounded-full shadow-md flex items-center justify-center 
+          text-[#6EC207] hover:bg-[#6EC207] hover:text-white transition"
+                    >
+                        <ChevronLeft size={26} />
+                    </button>
+
+                    {/* RIGHT */}
+                    <button
+                        onClick={() => scrollToIndex(activeIndex + 1)}
+                        className="absolute right-48 top-1/2 -translate-y-1/2 z-20 
+          bg-white w-14 h-14 rounded-full shadow-md flex items-center justify-center 
+          text-[#6EC207] hover:bg-[#6EC207] hover:text-white transition"
+                    >
+                        <ChevronRight size={26} />
+                    </button>
+
+                    <div
+                        ref={scrollRef}
+                        className="flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory px-[30%] scrollbar-hide py-10"
+                    >
+                        {doctors.map((doctor, index) => (
+                            <div
+                                key={index}
+                                className={`snap-center shrink-0 transition-all duration-500 transform
+              ${activeIndex === index
+                                        ? "scale-100 opacity-100"
+                                        : "scale-90 opacity-40"
+                                    }`}
+                            >
+                                <DoctorCard
+                                    name={doctor.name}
+                                    specialty={doctor.specialty}
+                                    image={doctor.image}
+                                    active={activeIndex === index}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
+
 
             {/* Events Section */}
             <section className="py-16 px-4 md:px-0 max-w-7xl mx-auto">
@@ -175,36 +316,34 @@ const Home = () => {
             </section>
             {/* Articles Section */}
             <section className="py-16 px-4 md:px-0 max-w-7xl mx-auto">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Berita & Artikel Kesehatan</h2>
-                <p className="text-gray-500 text-sm mb-10">Dapatkan informasi kesehatan terbaru dari tim medis kami untuk gaya hidup sehat Anda.</p>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Berita & Artikel Kesehatan</h2>
+                <p className="text-gray text-md mb-5" style={{ fontFamily: "'Inria Sans', sans-serif" }}>Dapatkan informasi kesehatan terbaru dari tim medis kami untuk gaya hidup sehat Anda.</p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <ArticleCard
-                        title="Kenali Gejala Stunting Pada Balita"
-                        date="12 Mei 2024"
-                        image="https://images.unsplash.com/photo-1628595351029-c2bf17511435"
-                    />
-                    <ArticleCard
-                        title="Cegah Demam Berdarah Secara Mandiri"
-                        date="10 Mei 2024"
-                        image="https://images.unsplash.com/photo-1628595351029-c2bf17511435"
-                    />
-                    <ArticleCard
-                        title="Begadang Dapat Mempengaruhi Kesehatan Tubuh"
-                        date="08 Mei 2024"
-                        image="https://images.unsplash.com/photo-1628595351029-c2bf17511435"
-                    />
-                    <ArticleCard
-                        title="Kenali Gejala Stunting Pada Balita"
-                        date="05 Mei 2024"
-                        image="https://images.unsplash.com/photo-1628595351029-c2bf17511435"
-                    />
+                <div
+                    ref={articleScrollRef}
+                    onScroll={handleArticleScroll}
+                    className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory scrollbar-hide py-4"
+                >
+                    {articles.map((article, index) => (
+                        <div key={index} className="min-w-[320px] max-w-[320px] snap-center h-[480px]">
+                            <ArticleCard
+                                title={article.title}
+                                subtitle={article.subtitle}
+                                date={article.date}
+                                image={article.image}
+                            />
+                        </div>
+                    ))}
                 </div>
 
-                <div className="flex justify-center mt-12 gap-2">
-                    <div className="w-2.5 h-2.5 bg-[#6EC207] rounded-full"></div>
-                    <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
-                    <div className="w-2.5 h-2.5 bg-gray-300 rounded-full"></div>
+                <div className="flex justify-center mt-6 gap-2">
+                    {articles.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => scrollToArticle(index)}
+                            className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${activeArticleIndex === index ? 'bg-[#6EC207]' : 'bg-gray-300'}`}
+                        />
+                    ))}
                 </div>
             </section>
         </div>
