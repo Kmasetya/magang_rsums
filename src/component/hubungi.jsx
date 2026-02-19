@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hubungi = () => {
     return (
-        <div className="w-full bg-[#f8f9fa] py-10 px-4 md:px-0">
+        <div className="w-full bg-[#f8f9fa] py-10 px-0 md:px-0">
             <div className="max-w-3xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-8">

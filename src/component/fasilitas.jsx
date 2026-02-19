@@ -40,7 +40,7 @@ const Fasilitas = () => {
 
     return (
         <div className="w-full bg-[#fcfdfc] font-sans pb-20">
-            <div className="max-w-7xl mx-auto px-4 md:px-16 pt-10">
+            <div className="max-w-7xl mx-auto px-0 md:px-0 pt-10">
                 <h1 className="text-3xl md:text-4xl font-bold mb-8 text-[#1A1A1A]">Fasilitas RS UMS</h1>
 
                 {/* Tabs */}

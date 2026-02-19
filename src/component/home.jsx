@@ -120,7 +120,7 @@ const ArticleCard = ({ title, date, image, subtitle }) => (
 
 const Home = () => {
     const scrollRef = useRef(null);
-    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [activeArticleIndex, setActiveArticleIndex] = useState(0);
     const articleScrollRef = useRef(null);
     const articles = [

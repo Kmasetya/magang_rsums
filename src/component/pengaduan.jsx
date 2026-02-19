@@ -3,11 +3,19 @@ import React from 'react';
 const Pengaduan = () => {
     return (
         <div className="w-full bg-[#FAFAFA] font-sans pb-20 pt-10">
-            <div className="max-w-7xl mx-auto px-4 md:px-16">
+            <div className="max-w-7xl mx-auto px-4 md:px-0">
                 <div className="bg-white rounded-[40px] shadow-lg p-2 md:p-4 flex flex-col md:flex-row gap-0 md:gap-8 overflow-hidden">
 
                     {/* Left Panel - Info */}
-                    <div className="w-full md:w-5/12 bg-[#B2E672] rounded-[30px] p-8 md:p-12 text-[#1A1A1A] flex flex-col justify-between min-h-[500px]">
+                    <div className="
+w-full md:w-5/12
+bg-gradient-to-b from-[#B2E672] to-white
+rounded-[30px] p-8 md:p-12
+text-[#1A1A1A]
+flex flex-col justify-between
+min-h-[500px]
+">
+
                         <div>
                             <h2 className="text-3xl font-bold mb-12">Get in touch</h2>
 

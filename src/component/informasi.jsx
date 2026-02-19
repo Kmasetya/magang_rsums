@@ -5,7 +5,7 @@ const Informasi = () => {
 
     return (
         <div className="w-full bg-[#f9f9f9] font-sans pb-20 pt-8">
-            <div className="max-w-7xl mx-auto px-4 md:px-16">
+            <div className="max-w-7xl mx-auto px-0 md:px-0">
 
                 {/* Header */}
                 <h1 className="text-4xl font-bold mb-6 text-[#1A1A1A]">Informasi</h1>
