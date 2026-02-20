@@ -76,17 +76,22 @@ const Profil = () => {
 
             {/* Falsafah Section */}
             <section className="px-4 md:px-0 pb-16 max-w-7xl mx-auto">
-                <div className="relative rounded-[40px] overflow-hidden h-[300px] md:h-[400px] group">
-                    <img
-                        src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop"
-                        alt="Hospital Building"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/50" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                        <div className="bg-white/90 px-8 py-2 rounded-full mb-6">
-                            <h2 className="text-[#6EC207] text-xl md:text-2xl font-bold uppercase tracking-widest">Falsafah</h2>
+                <div className="relative rounded-[40px] overflow-visible h-[300px] md:h-[300px] group">
+                    <div className="absolute inset-0 rounded-[40px] overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop"
+                            alt="Hospital Building"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/50" />
+                    </div>
+                    {/* Falsafah badge - at top edge, touching the image above */}
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 z-10">
+                        <div className="bg-[#F9FBF8] px-30 py-2 rounded-b-lg ">
+                            <h2 className="text-[#6EC207] text-xl md:text-[50px] pb-5 font-bold uppercase tracking-widest">Falsafah</h2>
                         </div>
+                    </div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
                         <p className="text-white text-lg md:text-2xl font-medium max-w-4xl leading-relaxed">
                             Rumah Sakit PKU Muhammadiyah Surakarta adalah suatu amal usaha Muhammadiyah sebagai perwujudan dari iman dan amal sholeh kepada Allah SWT serta menjadikannya sebagai sarana ibadah.
                         </p>
