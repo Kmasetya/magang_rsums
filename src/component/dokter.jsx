@@ -1,7 +1,7 @@
 import React from 'react';
 import carmen from '../assets/carmen.png';
 
-const DoctorCard = ({ name, specialty, image }) => (
+const DoctorCard = ({ name, specialty, image, onViewProfile }) => (
     <div className="relative w-[310px] max-w-[450px] h-[350px] flex items-end justify-center group bg-white rounded-4xl">
         {/* Background Image Container */}
         <div className="absolute inset-x-0 bottom-15 top-0 flex items-end justify-center z-0">
@@ -14,7 +14,10 @@ const DoctorCard = ({ name, specialty, image }) => (
         <div className="p-2 ">
             <div className="relative z-10 w-[290px] max-w-[300px] bg-[#8EDE36] rounded-b-3xl rounded-tl-3xl  p-3 shadow-lg mx-auto">
                 {/* Profile Button */}
-                <button className="absolute -top-9 right-0 bg-[#5A9B05] text-white pl-5 pr-4 py-2 rounded-t-2xl flex items-center gap-2 text-sm font-semibold shadow-md hover:bg-[#4a8004] transition-colors cursor-pointer">
+                <button
+                    onClick={() => onViewProfile && onViewProfile({ name, specialty, image, status: 'Dokter Spesialis Full-Timer', review: { name: 'Elham Ghaderi', rating: 5, text: '"Ketika saya masuk ke klinik, saya merasa tenang. Mulai dari sikap staf hingga ruang yang modern dan bersih, semuanya sangat meyakinkan. Dr. Karimi dengan sabar dan penuh ketelitian menjelaskan semua tahapan dan melakukan implan tanpa rasa sakit sama sekali. Sekarang setelah satu tahun, kondisinya masih sangat baik seperti hari pertama."' }, schedule: [] })}
+                    className="absolute -top-9 right-0 bg-[#5A9B05] text-white pl-5 pr-4 py-2 rounded-t-2xl flex items-center gap-2 text-sm font-semibold shadow-md hover:bg-[#4a8004] transition-colors cursor-pointer"
+                >
                     Lihat Profil
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -45,7 +48,7 @@ const DoctorCard = ({ name, specialty, image }) => (
     </div>
 );
 
-const Dokter = () => {
+const Dokter = ({ onViewProfile }) => {
     const doctors = [
         { name: "dr. chaewon", specialty: "Spesialis THT", image: carmen },
         { name: "dr. heeseung", specialty: "Spesialis Mata", image: carmen },
@@ -65,6 +68,7 @@ const Dokter = () => {
                             name={doctor.name}
                             specialty={doctor.specialty}
                             image={doctor.image}
+                            onViewProfile={onViewProfile}
                         />
                     ))}
                 </div>

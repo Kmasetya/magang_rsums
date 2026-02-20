@@ -8,9 +8,22 @@ import Informasi from "./component/informasi";
 import Hubungi from "./component/hubungi";
 import Footer from "./component/aset/footer";
 import Dokter from "./component/dokter";
+import ProfilDokter from "./component/aset/profil_dokter";
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
+
+  const handleViewDoctorProfile = (doctor) => {
+    setSelectedDoctor(doctor);
+    setCurrentPage('profil_dokter');
+    window.scrollTo(0, 0);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -27,7 +40,9 @@ function App() {
       case 'hubungi':
         return <Hubungi />;
       case 'dokter':
-        return <Dokter />;
+        return <Dokter onViewProfile={handleViewDoctorProfile} />;
+      case 'profil_dokter':
+        return <ProfilDokter doctor={selectedDoctor} onBack={() => handleNavigate('dokter')} />;
       default:
         return <Home />;
     }
@@ -35,7 +50,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-transparent flex flex-col">
-      <Navbar onNavigate={setCurrentPage} />
+      <Navbar onNavigate={handleNavigate} />
       <main className="flex-grow pt-[120px] md:pt-[125px]">
         {renderPage()}
       </main>
